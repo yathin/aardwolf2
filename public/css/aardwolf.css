@@ -1,0 +1,302 @@
+@font-face {
+    font-family: ostrich;
+    src: url('/fonts/ostrich-sans/OstrichSans-Light.otf');
+}
+
+@font-face {
+    font-family: ostrich;
+    src: url('/fonts/ostrich-sans/OstrichSans-Bold.otf');
+    font-weight: bold;
+}
+
+@font-face { 
+    font-family: open;
+    src: url('/fonts/open-sans/OpenSans-Regular.ttf');
+}
+
+@font-face { 
+    font-family: open;
+    src: url('/fonts/open-sans/OpenSans-Bold.ttf');
+    font-weight: bold;
+}
+
+@font-face { 
+    font-family: oxygen;
+    src: url('/fonts/oxygen-mono/OxygenMono-Regular.ttf');
+    font-weight: normal;
+}
+
+input[type="text"] {
+  padding: 1px;
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+input[type="text"]:focus,
+input[type="text"].focus {
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
+}
+
+.landing { 
+  border: solid 1px #FF6961;
+  box-shadow: 0 0 5px 1px #D93A32;
+}
+
+body {
+    margin:0;
+    padding:0;
+    line-height: 1.5em;
+    background-color: #e6e6e6;
+    font-family: open;
+    font-size: 0.8em;
+    color: #000;
+}
+
+a {
+    color: #00B7FF;
+}
+
+header {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 800px;
+    min-height:64px;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.nav {
+    display: table-cell;
+    background-color: #e6e6e6;
+    margin: 0;
+    padding: 0;
+    min-width: 1000px;
+    width: 100%;
+    font-family: ostrich;
+    font-weight: bold;
+    height: 64px;
+    vertical-align: middle;
+}
+
+.nav li {
+    list-style-type: none;
+    padding-left: 20px;
+    vertical-align: middle;
+    float: left;
+    color: #000000;
+}
+.nav a {
+    display: inline-block;
+    padding-left: 10px 0;
+    text-align: left;
+    vertical-align: middle;
+    color: #000000;
+}
+
+.nav img {
+    vertical-align: middle;
+}
+
+#search {
+    display: table-cell;
+    width: 200px;
+}
+
+.icons {
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+}
+
+
+
+#aardwolf-content {
+    float: left;
+    width: 100%;
+    height: 90%;
+}
+
+#aardwolf-images {
+    margin: 0 300px 0 300px; /*Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth*/
+    text-align: center;
+    background-color: black;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.galleria { 
+    width: 100%;
+    height: 100%; 
+    background: #e4e4e4;
+    margin: auto;
+}
+
+
+#aardwolf-left {
+    float: left;
+    width: 300px; /*Width of left column*/
+    margin-left: -100%;
+    background: #e6e6e6;
+    height: 90%;
+}
+
+#aardwolf-right {
+    float: left;
+    width: 300px; /*Width of right column*/
+    margin-left: -300px; /*Set left marginto -(RightColumnWidth)*/
+    background: #e6e6e6;
+    height: 90%;
+}
+
+footer{
+    clear: left;
+    width: 100%;
+    background: #e6e6e6;
+    color: #000;
+    text-align: center;
+    padding: 4px 0;
+    font-family: oxygen;
+}
+
+footer a {
+    color: #FFFF80;
+}
+
+.innertube{
+    margin: 10px; /*Margins for inner DIV inside each column (to provide padding)*/
+    margin-top: 0;
+    padding: 5px;
+    border: solid 1px #8f8f8f;
+    box-shadow: 0 0 5px 1px #8f8f8f;
+    min-height: 100%;
+    background-color: #dfdfdf;
+}
+
+@media (max-width: 840px){ 
+	#aardwolf-left {
+	    margin-left: -100%;
+	}
+	
+	#aardwolf-right {
+	    float: none;
+	    width: 100%;
+	    margin-left: 0;
+	    clear: both;
+	}
+	
+	#aardwolf-images {
+	    margin-right: 0; 
+	}
+}
+
+@media (max-width: 600px){ 
+	#aardwolf-left {
+	    float: none;
+	    width: 100%;
+	    clear: both;
+	    margin-left: 0;
+	}
+	
+	#aardwolf-images {
+	    margin-left: 0;
+	}
+}
+
+
+.ui-widget, .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button, .ui-widget li {
+    font-family: open;
+    font-weight: normal;
+    font-size: 0.8em;
+}
+
+thead, tfoot {
+    font-family: ostrich;
+    font-weight: normal;
+    font-size: 0.8em;
+}
+
+td {
+    font-family: oxygen;
+    font-weight: normal;
+    font-size: 0.7em;
+}
+
+label { 
+    font-size: 0.6em;
+}
+
+#camera-form, #tag { 
+    display: table;
+    width: 100%
+}
+
+.row { 
+    display: table-row;
+}
+
+.cell { 
+    display: table-cell;
+    vertical-align: top;
+}
+
+#aardwolf-browser { 
+    margin: 0 300px 0 300px; /*Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth*/
+    padding: 0px 20px 0px 20px;
+    text-align: left;
+    background-color: #454545;
+    height: 100%;
+    vertical-align: middle;
+    font-family: ostrich;
+    font-weight: bold;
+    font-size: 32px;
+    font-color: white;
+    overflow:scroll;
+}
+
+.ui-button .ui-icon.camera-list {
+    background-image: url('../images/icons/icon-camera.png');
+    width: 16;
+    height: 16;
+}
+
+.ui-button.ui-state-hover .ui-icon.camera-list {
+    background-image: url('../images/icons/icon-camera.png');
+    width: 16;
+    height: 16;
+}
+
+.camera-list li { 
+    padding-left: 10px;
+}
+
+.camera-list li:hover { 
+    background-color: #787878;
+}
+
+#download-folders { 
+    overflow: scroll;
+    border: 1px solid black;
+    height: 400;
+}
+
+#tags-select {
+    display: none;
+}
+
+.heading {
+    font-weight: bold;
+    background-color: #696969;
+    color: #efefef;
+}
+
+#exif-view, #landing-help, #photo-landing, #tags-landing {
+    display: none;
+}
+
+#download-src-folder {
+    width: 80%;
+}

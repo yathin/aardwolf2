@@ -1,0 +1,37 @@
+Aardwolf 2.0
+============
+
+Aardwolf 2.0 is intended to be more stable and easier to maintain. It is written almost entirely in Javascript and uses a RESTful architecture and now runs on a web browser instead of being a native application.
+
+Installation 
+------------
+The Aardwolf server-side code requires Node.js which can be downloaded from here: https://nodejs.org/en/download/
+
+Additionally a few more packages need to be installed either via the command like (e.g., brew) or by downloading binaries for your operating system: 
+	1. ImageMagick: http://www.imagemagick.org/script/binary-releases.php
+	2. GraphicsMagick: http://www.graphicsmagick.org/download.html
+	3. Exiftool: http://www.sno.phy.queensu.ca/~phil/exiftool/
+
+After installing Node.js and the packages above, please install Aardwolf dependencies by running "npm install" in the Aardwolf folder (via Terminal/Shell in Mac OS or Linux and the Command Prompt on Windows).
+
+After `npm install` finishes, please start Aardwolf by typing in "npm start"
+
+You should now be able to access Aardwolf from a web-browser by going to the link: http://localhost:7781/ 
+
+Although Aardwolf should run on any modern web browser, it was primarily tested using Google Chrome and hence it is the recommended browser to use.
+
+
+Differences between 1.x and 2.0
+-------------------------------
+Although this version of Aardwolf is intended to be as similar as possible to the previous version, it is a more simplified and hence does not (yet) have all of its original features. Some of the missing features include:
+	1. XMP support to add metadata to image files
+	2. Partition management to distribute Aardwolf data
+	3. Image grouping
+	4. Customizable reports
+
+
+Usage
+-----
+As in the previous version, Aardwolf requires users to first create cameras and tag definitions. Users can then download images from other drives/folders into the Aardwolf folder. All of the Aardwolf photo data is stored in the “public/data” folder. For viewing efficiency, photo downloads to Aardwolf now consumes more space and is slower because the downloader creates multiple resized versions of the original image. Users can then begin tagging images. Aardwolf 2.0 keeps track of the tagging process, so if the browser window is closed, users can resume tagging from where they last tagged an image. 
+
+Tagged data can be downloaded any time by visiting: http://localhost:7781/data/download (or using the link on the data view dialog). 

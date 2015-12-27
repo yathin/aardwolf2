@@ -1,0 +1,282 @@
+<html>
+    <head>
+        <title>Aardwolf2</title>
+        <script src='js/jquery-2.1.4.min.js'></script>
+        <script src='js/galleria-1.4.2.min.js'></script>
+        <script src='js/jquery-ui-1.11.4/jquery-ui.min.js'></script>
+        <script src='js/jquery.dataTables.min.js'></script>
+        <script src='js/jquery.validate.js'></script>
+        <script src='js/additional-methods.min.js'></script>
+        <script src='js/jqueryFileTree.js'></script>
+
+        <link href='js/jquery-ui-1.11.4/jquery-ui.min.css' rel='stylesheet' type='text/css'>
+        <link href='css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+        <link href='css/aardwolf.css' rel='stylesheet' type='text/css'>
+        <link href='css/jqft.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div>
+        <header>
+            <nav>
+                <ul class="nav">
+                    <li><a href='#'><img class='icons' id='about-icon' src="images/icons/aardwolf.png" alt="About Aardwolf" title="About Aardwolf"/></a></li>
+                    <li><a href='#'><img class='icons' id='settings-icon' src="images/icons/cc_appmgr.png" alt="Manage Project" title="Manage Project"/></a></li>
+                    <li><a href='#'><img class='icons' id='download-icon' src="images/icons/cc_dbadd.png" alt="Add Images" title="Add Images to Aardwolf"/></a></li>
+                    <li><a href='#'><img class='icons' id='dataview-icon' src="images/icons/cc_playlist.png" alt="View Data" title="View Data"/></a></li>
+                    <li><select id='tag-search' class='ui-widget' disabled><option value="">Select a tag...</option></select></li>
+                    <li><select id='view-camera' class='ui-widget' disabled><option value="">All Cameras</option></select></li>
+                    <li><select id='view-folder' class='ui-widget' disabled><option value="">All Folders</option></select></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <div id='aardwolf-content'>
+            
+            <div id='aardwolf-images'>
+                <div class='galleria'>
+                    <img src='images/dummy.png' data-title="Engraving of an aardwolf by Felix de Azara (1839)" data-description="The natural history of dogs : canidae or genus canis of authors ; including also the genera hyaena and proteles (Smith, Charles Hamilton, 1776-1859)">
+                </div>
+            </div>
+        </div>
+            <div id='aardwolf-left'> 
+                <div class='innertube'>
+                    <div id='tags-landing' class='landing'>
+                        <p>Please create tag groups and tags.</p>
+                    </div>
+                    <div id='tags-select'>
+                        <p class='heading'>Tags</p>
+                        <select id='tag-groups-select'></select>
+                        <div id='tag-input'>
+                        </div>
+                    </div>
+                    <div id='landing-help' class='landing'>
+                        <p>No cameras in the project! Aardwolf usage:</p>
+                        <ol>
+                            <li>Add cameras</li>
+                            <li>Create tag groups and tags</li>
+                            <li>Download photographs to cameras</li>
+                            <li>Tag photographs</li>
+                            <li>More: <a href='https://github.com/yathin/aardwolf2'>github.com/yathin/aardwolf2</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div id='aardwolf-right'> 
+                <div class='innertube'>
+                    <div id='photo-landing' class='landing'>
+                        Please add photographs to the project/camera.
+                    </div>
+                    <div id='photo-control'>
+                        <p class='heading'>Page Control</p>
+                        Pages: <input type='text' size=4 disabled id='num-pages' value=0> Photos: <input size=7 id='num-photos' type='text' disabled value='0'><br/>
+                        Photos per page: <input type='text' size=3 placeholder='Photos per page' value='100' id='photospp'/><br/>
+                        Page: <input type='text' size=4 placeholder='Current Page' id='current-page'/ value='0'> Page Index: <input type='text' size=3 placeholder='Index' id='current-page-index'/ value='0'><br/>
+                        <input type='checkbox' id='auto-page' checked/><label for='auto-page'>Switch pages automatically</label><br/>
+                        <button id='prev-page-button' disabled>Previous page</button> <button id='next-page-button' disabled>Next Page</button>
+                        <hr>
+                    </div>
+                    <div id='exif-view'>
+                        <p class='heading'>EXIF Data</p>
+                    <table id='exif-display'>
+                        <thead>
+                            <tr>
+                                <th>Key</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        <footer>
+            <div>Aardwolf Camera Trap Management Software, 2013-</div>
+        </footer>
+        </div>
+
+        <!-- File Browser (Downloader) -->
+        <div id='download-browser'>
+        </div>
+
+        <!-- Download Progress dialog -->
+        <div id='download-progress-dialog'>
+            <div id='download-progress-text'></div>
+            <div id='download-progress'></div>
+        </div>
+
+        <!-- Settings Window -->
+        <div id='settings' title="Manage Project">
+            <div id='settings-tabs'>
+                <ul>
+                    <li><a href='#camera-settings'>Camera</a></li>
+                    <li><a href='#tag-settings'>Tag</a></li>
+                </ul>
+                <div id='camera-settings'>
+                    <button id='add-camera-button'>Add Camera</button>
+                    <button id='edit-camera-button'>Edit Camera</button>
+                    <div id='add-camera'>
+                    <form id='camera-form' action='#' class="camera">
+                        <div class='row'>
+                            <input id='camera-project-id' type='hidden' name='$project_id' value='1'/>
+                            <input id='camera-id' type='hidden' name='$id' value='0'/>
+                            <label for='camera-name' class='cell'>Camera Name</label>
+                            <input id='camera-name' name='$name' type='text' class='cell required aardwolfName' minlength=2 placeholder='required'>
+                        </div>
+                        <div class='row'>
+                            <label for='camera-desc-name' class='cell'>Descriptive Camera Name</label>
+                            <input id='camera-desc-name' name='$desc_name' type='text' class='cell'>
+                        </div>
+                        <div class='row'>
+                            <label for='camera-lat' class='cell'>Latitude</label>
+                            <input id='camera-lat' name='$latitude' type='text' class='cell'>
+                        </div>
+                        <div class='row'>
+                            <label for='camera-lon' class='cell'>Longitude</label>
+                            <input id='camera-lon' name='$longitude' type='text' class='cell'>
+                        </div>
+                        <div class='row'>
+                            <label for='camera-or' class='cell'>Orientation</label>
+                            <input id='camera-or' name='$altitude' type='text' class='cell'>
+                        </div>
+                        <div class='row'>
+                            <label for='camera-alt' class='cell'>Altitude</label>
+                            <input id='camera-alt' name='$orientation' type='text' class='cell'>
+                        </div>
+                        <div class='row'>
+                            <label for='camera-info' class='cell'>Additional Information</label>
+                            <textarea id='camera-info' class='cell' name='$info'></textarea>
+                        </div>
+                    </form>
+                    </div>
+                    <table id='cameras' class='display' cellspacing='0' width='100%'>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Descriptive Name</th>
+                                <th>Latitude</th>
+                                <th>Longitude</th>
+                                <th>Orientation</th>
+                                <th>Altitude</th>
+                                <th>Info</th>
+                                <th>Created</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Descriptive Name</th>
+                                <th>Latitude</th>
+                                <th>Longitude</th>
+                                <th>Orientation</th>
+                                <th>Altitude</th>
+                                <th>Info</th>
+                                <th>Created</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div id='tag-settings'>
+                    <button id='edit-tag-group-button'>Manage Tag Groups</button>
+                    &nbsp; &nbsp; | &nbsp; &nbsp;
+                    <button id='new-tag-button'>New Tag</button>
+                    <button id='edit-tag-button'>Edit Tag</button>
+                    <div id='tag-group-window'>
+                        <input type='text' id='new-tag-group' value='' placeholder='New Tag Group'></input>&nbsp; 
+                        <button id='add-tag-group-button'>Create</button> &nbsp; | &nbsp;
+                        <input type='hidden' id='selected-tag-group' value=''></input>
+                        <button id='remove-tag-group-button'>Remove</button>
+
+                        <table id='tag-groups' class='display' cellspacing='0' width='100%'>
+                            <thead><tr><th>Tag Group</th></tr></thead>
+                        </table>
+                    </div>
+                    <div id='tag-window'>
+                    <form id='tag' action='#' class="tag">
+                        <div class='row'>
+                            <label for='tag-group-name' class='cell'>Tag Group</label>
+                            <select id='tag-group-name' name='$group_name'></select>
+                        </div>
+                        <div class='row'>
+                            <label for='tag-name' class='cell'>Tag Name</label>
+                            <input id='tag-name' name='$name' type='text' class='cell required aardwolfName' placeholder='required' minlength=2>
+                        </div>
+                        <div class='row'>
+                            <label for='tag-value-type' class='cell'>Value Type</label>
+                            <select id='tag-value-type' name='$value_type'></select>
+                        </div>
+                        <div class='row'>
+                            <label for='tag-shortcut' class='cell'>Shortcut</label>
+                            <input id='tag-shortcut' name='$shortcut' type='text' class='cell' maxlength=1>
+                        </div>
+                        <!-- TODO: Add XMP support in future -->
+                        <div class='ui-helper-hidden'>
+                            <label for='tag-xmp-name' class='cell'>XMP Name</label>
+                            <input id='tag-xmp-name' name='$xmp_name' type='text' class='cell' readonly>
+                        </div>
+                    </form>
+                    </div>
+                    <table id='tags' class='display' cellspacing='0' width='100%'>
+                        <thead>
+                            <tr>
+                                <th>Group Name</th>
+                                <th>Name</th>
+                                <th>Value Type</th>
+                                <th>Shortcut</th>
+                                <th>XMP Name</th>
+                                <th>Created</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Group Name</th>
+                                <th>Name</th>
+                                <th>Value Type</th>
+                                <th>Shortcut</th>
+                                <th>XMP Name</th>
+                                <th>Created</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id='download-window'>
+            Target Camera: <select id='download-camera'></select> <br/>
+            Source Drive: <select id='download-src-drive'></select> <br/>
+            Source Folder: <span><input type='text' disabled id='download-src-folder' val=""></span><br/>
+            <div id='download-folders'></div>
+        </div>
+
+        <div id='error-msgbox' title="Aardwolf Error">
+        </div>
+
+        <div id='data-view' title="Data View/Download">
+            <h3><a target="_blank" href="/data/download">Download CSV</a></h3>
+            <hr>
+            <table id='data-view-table'>
+            </table>
+        </div>
+
+        <div id='about' title="About Aardwolf">
+            Aardwolf 2.0 is released under the <a target="_blank" href='https://opensource.org/licenses/MIT'>MIT License</a>. <br/>
+            Authors: <br/> 
+            &nbsp; &nbsp; <a target="_blank" href='http://www.yathin.com/'>Yathin S Krishnappa</a> (yathin at gmail)<br/>
+            &nbsp; &nbsp; <a target="_blank" href='http://www.wendyturner.org'>Wendy Turner</a> 
+        </div>
+
+        <script src='js/aardwolf/camera.js'></script>
+        <script src='js/aardwolf/data.js'></script>
+        <script src='js/aardwolf/download.js'></script>
+        <script src='js/aardwolf/gallery.js'></script>
+        <script src='js/aardwolf/helper.js'></script>
+        <script src='js/aardwolf/keyboard.js'></script>
+        <script src='js/aardwolf/page.js'></script>
+        <script src='js/aardwolf/search.js'></script>
+        <script src='js/aardwolf/settings.js'></script>
+        <script src='js/aardwolf/tags.js'></script>
+        <script src='js/aardwolf.js'></script>
+        
+    </body>
+</html>
