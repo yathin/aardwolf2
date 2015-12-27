@@ -8,9 +8,10 @@ Installation
 The Aardwolf server-side code requires Node.js which can be downloaded from here: https://nodejs.org/en/download/
 
 Additionally a few more packages need to be installed either via the command like (e.g., brew) or by downloading binaries for your operating system: 
-	1. ImageMagick: http://www.imagemagick.org/script/binary-releases.php
-	2. GraphicsMagick: http://www.graphicsmagick.org/download.html
-	3. Exiftool: http://www.sno.phy.queensu.ca/~phil/exiftool/
+    0. SQLite: http://sqlite.org/download.html
+    1. ImageMagick: http://www.imagemagick.org/script/binary-releases.php
+    2. GraphicsMagick: http://www.graphicsmagick.org/download.html
+    3. Exiftool: http://www.sno.phy.queensu.ca/~phil/exiftool/
 
 After installing Node.js and the packages above, please install Aardwolf dependencies by running "npm install" in the Aardwolf folder (via Terminal/Shell in Mac OS or Linux and the Command Prompt on Windows).
 
@@ -24,10 +25,10 @@ Although Aardwolf should run on any modern web browser, it was primarily tested 
 Differences between 1.x and 2.0
 -------------------------------
 Although this version of Aardwolf is intended to be as similar as possible to the previous version, it is a more simplified and hence does not (yet) have all of its original features. Some of the missing features include:
-	1. XMP support to add metadata to image files
-	2. Partition management to distribute Aardwolf data
-	3. Image grouping
-	4. Customizable reports
+    1. XMP support to add metadata to image files
+    2. Partition management to distribute Aardwolf data
+    3. Image grouping
+    4. Customizable reports
 
 
 Usage
