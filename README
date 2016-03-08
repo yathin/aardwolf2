@@ -3,25 +3,6 @@ Aardwolf 2.0
 
 Aardwolf 2.0 is intended to be more stable and easier to maintain. It is written almost entirely in Javascript and uses a RESTful architecture and now runs on a web browser instead of being a native application.
 
-Installation 
-------------
-The Aardwolf server-side code requires Node.js which can be downloaded from here: https://nodejs.org/en/download/
-
-Additionally a few more packages need to be installed either via the command like (e.g., brew) or by downloading binaries for your operating system: 
-    0. SQLite: http://sqlite.org/download.html
-    1. ImageMagick: http://www.imagemagick.org/script/binary-releases.php
-    2. GraphicsMagick: http://www.graphicsmagick.org/download.html
-    3. Exiftool: http://www.sno.phy.queensu.ca/~phil/exiftool/
-
-After installing Node.js and the packages above, please install Aardwolf dependencies by running "npm install" in the Aardwolf folder (via Terminal/Shell in Mac OS or Linux and the Command Prompt on Windows).
-
-After `npm install` finishes, please start Aardwolf by typing in "npm start"
-
-You should now be able to access Aardwolf from a web-browser by going to the link: http://localhost:7781/ 
-
-Although Aardwolf should run on any modern web browser, it was primarily tested using Google Chrome and hence it is the recommended browser to use.
-
-
 Differences between 1.x and 2.0
 -------------------------------
 Although this version of Aardwolf is intended to be as similar as possible to the previous version, it is a more simplified and hence does not (yet) have all of its original features. Some of the missing features include:
@@ -36,3 +17,60 @@ Usage
 As in the previous version, Aardwolf requires users to first create cameras and tag definitions. Users can then download images from other drives/folders into the Aardwolf folder. All of the Aardwolf photo data is stored in the “public/data” folder. For viewing efficiency, photo downloads to Aardwolf now consumes more space and is slower because the downloader creates multiple resized versions of the original image. Users can then begin tagging images. Aardwolf 2.0 keeps track of the tagging process, so if the browser window is closed, users can resume tagging from where they last tagged an image. 
 
 Tagged data can be downloaded any time by visiting: http://localhost:7781/data/download (or using the link on the data view dialog). 
+
+Prerequisites
+-------------
+Aardwolf requires the following packages to be installed before it can be run:
+    0. Node.js: https://nodejs.org/en/download/ 
+    1. SQLite: http://sqlite.org/download.html
+    2. ImageMagick: http://www.imagemagick.org/script/binary-releases.php
+    3. GraphicsMagick: http://www.graphicsmagick.org/download.html
+    4. Exiftool: http://www.sno.phy.queensu.ca/~phil/exiftool/
+
+Installing prerequisites on Windows
+-----------------------------------
+Aardwolf requires installation of required packages and manual configuration changes for running on Windows. The steps required are described here.
+
+1. Node.js
+Node.js is an open-source and cross-platform environment which is required for Aardwolf to run. You can install Node.js by downloading a Windows installer from this link: 
+    https://nodejs.org/en/download/
+
+2. SQLite
+SQLite is a relational database management system that Aardwolf uses to store data for its projects and photographs. Since SQLite is often embedded/bundled with software like in the case of Aardwolf, this step requires some manual configuration.
+    i.   Download precompiled binaries for your version of Windows from:
+            http://sqlite.org/download.html
+            For example, you can download the sqlite-shell-win32-*.zip and 
+            sqlite-dll-win32-*.zip zipped files.
+    ii.  Create a directory (e.g., C:\>Aardwolf-req) and unzip the files 
+         downloaded in step (i). This directory should now contain sqlite3
+         libraries (.dll) and executable (.exe).
+    iii. You will need to add this directory into the Windows PATH environment 
+         variable. Here are the steps to modify the PATH variable:
+            a. Start -> Settings -> Control Panel -> System
+            b. Select "Advanced" settings
+            c. Click on the environment variables button
+            d. Select path and then edit
+            e. Add a semi-colon followed by the new directory (ex: ;C:\>Aardwolf-req)
+            f. Save and exit.
+
+3. Install ImageMagick using its Windows installer that can be downloaded from:
+    http://www.imagemagick.org/script/binary-releases.php
+
+4. Install GraphicsMagick using its Windows installer that can be downloaded from:
+    https://sourceforge.net/projects/graphicsmagick/files/
+
+5. The last step is to download Exiftool from: 
+    http://www.sno.phy.queensu.ca/~phil/exiftool/
+    You will have to rename to exiftool.exe and copy it to a directory in the PATH environment variable (or create/add a new directory to the PATH variable). It can be put into the directory created in step 2.
+
+Running Aardwolf
+----------------
+After installing prerequisites, please download the Aardwolf code into a drive/directory you plan to store your image files in. Ideally, it should be a dedicated drive or another drive that has lots of space. Using the terminal/shell/Command Prompt, Aardwolf can be initialized by typing in "npm install" in the directory with the Aardwolf code in it.
+
+After `npm install` finishes, please start Aardwolf by typing in "npm start"
+
+You should now be able to access Aardwolf from a web-browser by going to the link: http://localhost:7781/ 
+
+To stop Aardwolf, simply exit the server-side process by using Ctrl-C (you will have to do "npm start" to start Aardwolf in the future)
+
+Although Aardwolf should run on any modern web browser, it was primarily tested using Google Chrome and hence it is the recommended browser to use.
