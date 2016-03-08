@@ -1,0 +1,4 @@
+When Aardwolf first runs, it will create a SQLite database file 
+named aardwolf.db in this directory. This contains all the tagged
+data and it is recommended that this file is backed up frequently
+(e.g., in source control) to guard against accidental data loss.
