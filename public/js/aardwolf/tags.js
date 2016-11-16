@@ -7,8 +7,9 @@ var AardwolfTags = {
     init: function() {
         this.initGroupsConf();
         this.initTagsConf();
+        var self = this;
         
-        $("#tag-groups-select").change(this.inputRefresh);
+        $("#tag-groups-select").change(function(){self.inputRefresh();});
 
         $("#tag").validate({
             invalidHandler: function(event, validator) {
