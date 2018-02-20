@@ -261,7 +261,7 @@ var AardwolfTags = {
                     $("#edit-tag-button").button("disable");
                 }
                 else {
-                    camerasTable.$("tr.selected").removeClass("selected");
+                    self.tagsTable.$("tr.selected").removeClass("selected");
                     $(this).addClass("selected");
                     $("#edit-tag-button").button("enable");
                     var row = self.tagsTable.row(this).data();

@@ -19,7 +19,7 @@
     "drivelist": "~2.0.4",
     "json2csv": "~3.0.1"
   },
-  "scripts": { 
-      "start": "node app.js"
-  } 
+  "scripts": {
+    "start": "node app.js"
+  }
 }
