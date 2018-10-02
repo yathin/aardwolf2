@@ -370,18 +370,18 @@ var AardwolfTags = {
                         case "Text": 
                         case "Numeric": 
                             $("#tag-input").append("<label for=\"" + elem_id + "\">" + v.name + ((v.shortcut != "") ? (" (<u>" + v.shortcut + "</u>)") : "" ) + ": </label>");
-                            $("#tag-input").append("<input class=\"tag-inputs\" type=\"text\" " + attrList.join(" ") + " value= \"\" id=\"" + elem_id + "\"><br>");
+                            $("#tag-input").append("<input class=\"tag-inputs-i\" type=\"text\" " + attrList.join(" ") + " value= \"\" id=\"" + elem_id + "\"><br>");
                             break;
                         case "Textbox": 
                             $("#tag-input").append("<label for=\"" + elem_id + "\">" + v.name + ((v.shortcut != "") ? (" (<u>" + v.shortcut + "</u>)") : "" ) + ": </label>");
-                            $("#tag-input").append("<textarea " + attrList.join(" ") + " class=\"tag-inputs\" value= \"\" id=\"" + elem_id + "\"></textarea><br>");
+                            $("#tag-input").append("<textarea " + attrList.join(" ") + " class=\"tag-inputs-i\" value= \"\" id=\"" + elem_id + "\"></textarea><br>");
                             break;
                     }
                 });
-                $(".tag-inputs").on("input", function(){
+                $(".tag-inputs-i").on("input", function(e){
                     self.update($(this), null);
                 });
-                $(".tag-inputs").on("click", function(){
+                $(".tag-inputs").on("click", function(e){
                     self.update($(this), null);
                 });
                 self.populate();
